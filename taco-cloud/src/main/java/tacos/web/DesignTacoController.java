@@ -24,8 +24,8 @@ import tacos.data.IngredientRepository;
 
 @Slf4j
 @Controller
-@RequestMapping("/design")
-@SessionAttributes("tacoOrder")
+@RequestMapping("/design")   /*เป็นค้นทุกอย่างเมือ /desing */
+@SessionAttributes("tacoOrder")  
 public class DesignTacoController {
 
   private final IngredientRepository ingredientRepo;
@@ -35,7 +35,7 @@ public class DesignTacoController {
     this.ingredientRepo = ingredientRepo;
   }
 
-  @ModelAttribute
+  @ModelAttribute   /* สร้าง model */
   public void addIngredientsToModel(Model model) {
     List<Ingredient> ingredients = new ArrayList<>();
     ingredientRepo.findAll().forEach(i -> ingredients.add(i));
@@ -47,7 +47,7 @@ public class DesignTacoController {
     }
   }
 
-  @ModelAttribute(name = "tacoOrder")
+  @ModelAttribute(name = "tacoOrder")    
   public TacoOrder order() {
     return new TacoOrder();
   }
